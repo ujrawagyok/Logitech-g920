@@ -3,10 +3,10 @@ import pygame
 pygame.init()
 
 
-kontrollerek = pygame.joystick.get_count()
-print(f"Az elérhető kontrolllerek száma: {kontrollerek}")
+noc = pygame.joystick.get_count()   #number of controllers    noc
+print(f"Number of controllers: {noc}")
 
-if kontrollerek > 0:
+if noc > 0:
     wheel = pygame.joystick.Joystick(0)
     wheel.init()
 
@@ -20,16 +20,16 @@ while True:
         if event.type == pygame.JOYAXISMOTION:
             if event.axis == 0: 
                 steering = event.value
-                print(f"kormany:{steering}   Kuplung:{clutch}   Fék: {brake}    Gáz:{throotle}")
+                print(f"Steering:{steering}   Clutch:{clutch}   Brake: {brake}    Throotle:{throotle}")
             elif event.axis == 1: 
                 throotle = event.value
-                print(f"kormany:{steering}   Kuplung:{clutch}   Fék: {brake}    Gáz:{throotle}")
+                print(f"Steering:{steering}   Clutch:{clutch}   Brake: {brake}    Throotle:{throotle}")
             elif event.axis == 2: 
                 brake = event.value
-                print(f"kormany:{steering}   Kuplung:{clutch}   Fék: {brake}    Gáz:{throotle}")
+                print(f"Steering:{steering}   Clutch:{clutch}   Brake: {brake}    Throotle:{throotle}")
             elif event.axis == 3: 
                 clutch = event.value
-                print(f"kormany:{steering}   Kuplung:{clutch}   Fék: {brake}    Gáz:{throotle}")
+                print(f"Steering:{steering}   Clutch:{clutch}   Brake: {brake}    Throotle:{throotle}")
         elif event.type == pygame.JOYBUTTONDOWN:
             if event.button == 0:
                 print("A")
@@ -67,5 +67,5 @@ while True:
                 print("5")
             if event.button == 17:
                 print("6")
-        elif event.type == pygame.JOYHATMOTION:
+        elif event.type == pygame.JOYHATMOTION:    # d-pad   {value,value}
             print(event.value)
